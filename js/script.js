@@ -26,4 +26,16 @@ const slides = [
     }
 ];
 
+const newVue = new Vue({
+    el: "#app",
+
+    data: {
+        slidesObjects: slides,
+    },
+    methods: {
+
+    },
+
+});
+
 console.log(slides);
