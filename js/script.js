@@ -32,26 +32,49 @@ const newVue = new Vue({
 
     data: {
         slidesObjects: slides,
+        currentObject: 0,
         currentImage: 1,
         imageSlider: "img/01.jpg",
     },
     methods: {
         clickedPrevious() {
             console.log('clicked previous');
-            if(this.currentImage <= 1) {
-                this.currentImage = 6;
-            }
+            // if(this.currentImage < 0 || this.currentObject < 0) {
+            //     this.currentImage = 5;
+            //     this.currentObject = 4;
+            // }
+
+            // this.imageSlider = `img/0${this.currentImage}.jpg`;
             this.currentImage--;
+            this.currentObject--;
+
+            if(this.currentImage < 1 || this.currentObject < 0) {
+                this.currentImage = 5;
+                this.currentObject = 4;
+            }
+
             this.imageSlider = `img/0${this.currentImage}.jpg`;
+
         },
 
         clickedNext() {
             console.log('clicked next');
-            if(this.currentImage >= 5) {
-                this.currentImage = 0;
-            }
+            // if(this.currentImage >= 5 || this.currentObject >= 4) {
+            //     this.currentImage = 1;
+            //     this.currentObject = 0;
+            // }
+
             this.currentImage++;
+            this.currentObject++;
+
+            if(this.currentImage >= 6 || this.currentObject >= 5) {
+                this.currentImage = 1;
+                this.currentObject = 0;
+            }
+
+
             this.imageSlider = `img/0${this.currentImage}.jpg`;
+
 
             
         }
