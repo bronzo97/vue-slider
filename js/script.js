@@ -26,14 +26,35 @@ const slides = [
     }
 ];
 
+
 const newVue = new Vue({
     el: "#app",
 
     data: {
         slidesObjects: slides,
+        currentImage: 1,
+        imageSlider: "img/01.jpg",
     },
     methods: {
+        clickedPrevious() {
+            console.log('clicked previous');
+            if(this.currentImage <= 1) {
+                this.currentImage = 6;
+            }
+            this.currentImage--;
+            this.imageSlider = `img/0${this.currentImage}.jpg`;
+        },
 
+        clickedNext() {
+            console.log('clicked next');
+            if(this.currentImage >= 5) {
+                this.currentImage = 0;
+            }
+            this.currentImage++;
+            this.imageSlider = `img/0${this.currentImage}.jpg`;
+
+            
+        }
     },
 
 });
